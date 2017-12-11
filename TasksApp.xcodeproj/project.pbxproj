@@ -16,6 +16,7 @@
 		94BAF0051FD89F4000017674 /* TaskCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAF0041FD89F4000017674 /* TaskCellTableViewCell.swift */; };
 		94BAF0071FD8A61400017674 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAF0061FD8A61400017674 /* PostService.swift */; };
 		94BAF0091FD8B02A00017674 /* PostRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAF0081FD8B02A00017674 /* PostRoute.swift */; };
+		94E0D20A1FDF27F100D699EF /* DBTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0D2091FDF27F100D699EF /* DBTask.swift */; };
 		94FA8D561FD9D35700AFE5B8 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA8D551FD9D35700AFE5B8 /* TasksViewController.swift */; };
 		94FA8D581FD9EA3600AFE5B8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA8D571FD9EA3600AFE5B8 /* DetailViewController.swift */; };
 		94FA8D5C1FDAF91800AFE5B8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA8D5B1FDAF91800AFE5B8 /* Date.swift */; };
@@ -35,6 +36,7 @@
 		94BAF0041FD89F4000017674 /* TaskCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellTableViewCell.swift; sourceTree = "<group>"; };
 		94BAF0061FD8A61400017674 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		94BAF0081FD8B02A00017674 /* PostRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRoute.swift; sourceTree = "<group>"; };
+		94E0D2091FDF27F100D699EF /* DBTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBTask.swift; sourceTree = "<group>"; };
 		94FA8D551FD9D35700AFE5B8 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		94FA8D571FD9EA3600AFE5B8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		94FA8D5B1FDAF91800AFE5B8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				94FA8D551FD9D35700AFE5B8 /* TasksViewController.swift */,
 				94FA8D571FD9EA3600AFE5B8 /* DetailViewController.swift */,
 				94FA8D5B1FDAF91800AFE5B8 /* Date.swift */,
+				94E0D2091FDF27F100D699EF /* DBTask.swift */,
 			);
 			path = TasksApp;
 			sourceTree = "<group>";
@@ -209,6 +212,8 @@
 				"${BUILT_PRODUCTS_DIR}/Genome/Genome.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -219,6 +224,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Genome.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -258,6 +265,7 @@
 				94BAEFF31FD88B7C00017674 /* AppDelegate.swift in Sources */,
 				94BAF0071FD8A61400017674 /* PostService.swift in Sources */,
 				94FA8D5C1FDAF91800AFE5B8 /* Date.swift in Sources */,
+				94E0D20A1FDF27F100D699EF /* DBTask.swift in Sources */,
 				94FA8D581FD9EA3600AFE5B8 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

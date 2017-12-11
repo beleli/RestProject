@@ -11,6 +11,7 @@ target 'TasksApp' do
   pod 'KeychainSwift'
   pod 'BFKit-Swift'
   pod 'DatePickerDialog'
+  pod 'RealmSwift'
 
 end
 

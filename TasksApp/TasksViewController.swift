@@ -16,6 +16,8 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     var originalTasks = [TaskItem]()
     var filteredTasks = [TaskItem]()
     var selectedItem: TaskItem?
+    let offlineDb = OffLineDb()
+    var synchronizeDb = true
     var searchController: UISearchController!
     
     @IBAction func btnSearch(_ sender: UIBarButtonItem) {
@@ -66,7 +68,8 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTasks()
+        //getTasks()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,14 +126,15 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     private func deleteTask(id: String) {
         //show loading
         PostService().deleteTask(id: id,
-            onSuccess: { response in
+            onSuccess: { _ in
                 self.getTasks()
         },
             onError: { _ in
-                self.showMessage("Houve erro ao excluir a tarefa")
+                let task = TaskItem()
+                task.id = id
+                self.offlineDb.deleteTaksOffline(task)
         },
             always: {
-                self.tableView.reloadData()
         })
     }
 
@@ -140,14 +144,20 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
         PostService().getTasks(
             onSuccess: { response in
                 self.originalTasks = (response?.body?.results!)!
-                self.filteredTasks = self.originalTasks
-                self.tableView.reloadData()
+                if self.synchronizeDb {
+                    self.offlineDb.synchronizeDb()
+                    self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
+                    self.synchronizeDb = false
+                    self.getTasks()
+                }
         },
             onError: { _ in
-                self.showMessage("Erro ao buscar as tarefas")
+                self.originalTasks = self.offlineDb.getAllDbTasks()
+                self.showMessage("Erro ao buscar as tarefas, utilizando base local")
         },
             always: {
-                
+                self.filteredTasks = self.originalTasks
+                self.tableView.reloadData()
         })
     }
     

@@ -21,6 +21,11 @@ PODS:
   - Genome/Packages (3.2.1)
   - IQKeyboardManagerSwift (5.0.6)
   - KeychainSwift (10.0.0)
+  - Realm (3.0.2):
+    - Realm/Headers (= 3.0.2)
+  - Realm/Headers (3.0.2)
+  - RealmSwift (3.0.2):
+    - Realm (= 3.0.2)
 
 DEPENDENCIES:
   - BFKit-Swift
@@ -28,6 +33,7 @@ DEPENDENCIES:
   - EasyRest
   - IQKeyboardManagerSwift
   - KeychainSwift
+  - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
@@ -37,7 +43,9 @@ SPEC CHECKSUMS:
   Genome: e4580f825985c836e68c15f4969f9449734c8dad
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
+  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
+  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
 
-PODFILE CHECKSUM: 8c782167cf1d6a2b36f99b3cd16042cff1b1e333
+PODFILE CHECKSUM: 5471ed24cac9454232db7a94142106722224a7d4
 
 COCOAPODS: 1.3.1

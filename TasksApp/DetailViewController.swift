@@ -12,6 +12,7 @@ import DatePickerDialog
 class DetailViewController: UIViewController {
     
     var task: TaskItem?
+    let offlineDb = OffLineDb()
     
     @IBOutlet weak var titulo: UITextField!
     @IBOutlet weak var descricao: UITextView!
@@ -64,6 +65,7 @@ class DetailViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
+                self.offlineDb.saveTaksOffline(self.task!)
                 self.showMessage("Houve erro ao alterar a tarefa")
         },
             always: {
@@ -78,6 +80,7 @@ class DetailViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
+                self.offlineDb.saveTaksOffline(self.task!)
                 self.showMessage("Houve erro ao criar a tarefa")
         },
             always: {
