@@ -60,7 +60,7 @@ class DetailViewController: UIViewController {
     }
     
     func editTask(item: TaskItemDb) {
-        let aux = offlineDb.getItem(task!)
+        let aux = offlineDb.getItem(item)
         PostService().editTask(id: aux.id!, task: aux,
             onSuccess: { response in
                 self.task = self.offlineDb.getItemDb(response!.body!)
@@ -77,7 +77,7 @@ class DetailViewController: UIViewController {
     }
     
     func saveTask(item: TaskItemDb) {
-        let aux = offlineDb.getItem(task!)
+        let aux = offlineDb.getItem(item)
         PostService().saveTask(task: aux,
             onSuccess: { response in
                 self.task = self.offlineDb.getItemDb(response!.body!)
