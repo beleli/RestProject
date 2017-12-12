@@ -34,7 +34,9 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(login.access_token, forKey: "token")
             self.performSegue(withIdentifier: "segueToTasks", sender: self)
         }, onError: { _ in
-            self.showMessage("Houve algum problema")
+            self.performSegue(withIdentifier: "segueToTasks", sender: self)
+            self.showMessage("Houve algum problema, seguindo offline")
+            
         }, always: {
             //hide loading
         })

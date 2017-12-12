@@ -14,6 +14,7 @@ import Genome
 class PostService: Service<PostRoute> {
     
     override var base: String {return "http://localhost:8000/api"}
+    //override var base: String {return "http://localhost:8000/ai"}
     
     override var interceptors: [Interceptor]? {
         get {

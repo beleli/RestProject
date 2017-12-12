@@ -11,7 +11,7 @@ import DatePickerDialog
 
 class DetailViewController: UIViewController {
     
-    var task: TaskItem?
+    var task: TaskItemDb?
     let offlineDb = OffLineDb()
     
     @IBOutlet weak var titulo: UITextField!
@@ -25,10 +25,10 @@ class DetailViewController: UIViewController {
         if let aux = task {
             descricao.text = aux.descricao
             titulo.text = aux.title
-            completo.isOn = aux.is_complete!
+            completo.isOn = aux.is_complete.boolValue
             //dataExpiracao.date = Date(fromString: aux.expiration_date!, format: .isoDate)!
         } else {
-            task = TaskItem()
+            task = TaskItemDb()
             task?.owner = "c8abc5a6-802c-485d-b7a8-aae79346e5f5"
         }
     }
@@ -47,41 +47,46 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func touchSalvar(_ sender: UIButton) {
-        task?.descricao = descricao.text
-        task?.title = titulo.text
-        task?.is_complete = completo.isOn
+        let aux = self.offlineDb.clone(task!)
+        aux.descricao = descricao.text
+        aux.title = titulo.text
+        aux.is_complete = completo.isOn ? true : false
         //task?.expiration_date = date?.toString(format: .isoDate)
-        if task?.id == nil {
-            saveTask()
+        if aux.id == nil {
+            saveTask(item: aux)
         } else {
-            editTask()
+            editTask(item: aux)
         }
     }
     
-    func editTask() {
-        PostService().editTask(id: task!.id!, task: task!,
+    func editTask(item: TaskItemDb) {
+        let aux = offlineDb.getItem(task!)
+        PostService().editTask(id: aux.id!, task: aux,
             onSuccess: { response in
-                self.task = response!.body
+                self.task = self.offlineDb.getItemDb(response!.body!)
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
-                self.offlineDb.saveTaksOffline(self.task!)
-                self.showMessage("Houve erro ao alterar a tarefa")
+                self.offlineDb.saveTaksOffline(item)
+                self.navigationController?.popViewController(animated: true)
+                self.showMessage("Houve erro ao alterar a tarefa, inserido offline")
         },
             always: {
                 
         })
     }
     
-    func saveTask() {
-        PostService().saveTask(task: task!,
+    func saveTask(item: TaskItemDb) {
+        let aux = offlineDb.getItem(task!)
+        PostService().saveTask(task: aux,
             onSuccess: { response in
-                self.task = response!.body
+                self.task = self.offlineDb.getItemDb(response!.body!)
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
-                self.offlineDb.saveTaksOffline(self.task!)
-                self.showMessage("Houve erro ao criar a tarefa")
+                self.offlineDb.saveTaksOffline(item)
+                self.navigationController?.popViewController(animated: true)
+                self.showMessage("Houve erro ao criar a tarefa, inserido offline")
         },
             always: {
                                 

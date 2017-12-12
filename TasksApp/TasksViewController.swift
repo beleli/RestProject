@@ -13,9 +13,9 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var btnSearch: UIBarButtonItem!
     
-    var originalTasks = [TaskItem]()
-    var filteredTasks = [TaskItem]()
-    var selectedItem: TaskItem?
+    var originalTasks = [TaskItemDb]()
+    var filteredTasks = [TaskItemDb]()
+    var selectedItem: TaskItemDb?
     let offlineDb = OffLineDb()
     var synchronizeDb = true
     var searchController: UISearchController!
@@ -77,9 +77,8 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        selectedItem = nil
-        getTasks()
-        self.tableView.reloadData()
+        self.selectedItem = nil
+        self.getTasks()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -97,7 +96,7 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
         cell.nome.text = item.title
         cell.descricao.text = item.descricao
         cell.horario.text = item.expiration_date
-        cell.enable.isHidden = !item.is_complete!
+        cell.enable.isHidden = !item.is_complete.boolValue
         
         return cell
     }
@@ -109,10 +108,10 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     //remover remainder
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteTask(id: originalTasks[indexPath.row].id!)
+            deleteTask(task: originalTasks[indexPath.row])
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedItem = originalTasks[indexPath.row]
         performSegue(withIdentifier: "segueToDetail", sender: self)
@@ -123,32 +122,35 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
         destVC.task = selectedItem
     }
     
-    private func deleteTask(id: String) {
+    private func deleteTask(task: TaskItemDb) {
         //show loading
-        PostService().deleteTask(id: id,
-            onSuccess: { _ in
-                self.getTasks()
-        },
-            onError: { _ in
-                let task = TaskItem()
-                task.id = id
-                self.offlineDb.deleteTaksOffline(task)
-        },
-            always: {
-        })
+        if task.id == nil {
+            offlineDb.deleteTaksOffline(task)
+            self.getTasks()
+        } else {
+            PostService().deleteTask(id: task.id!,
+                onSuccess: { _ in },
+                onError: { _ in
+                    self.offlineDb.deleteTaksOffline(task)
+            },
+                always: {
+                    self.getTasks()
+            })
+        }
     }
-
+    
     
     private func getTasks() {
         //show loading
         PostService().getTasks(
             onSuccess: { response in
-                self.originalTasks = (response?.body?.results!)!
+                self.originalTasks = self.offlineDb.getItemDb((response?.body?.results)!)
                 if self.synchronizeDb {
                     self.offlineDb.synchronizeDb()
                     self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
                     self.synchronizeDb = false
-                    self.getTasks()
+                } else {
+                    self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
                 }
         },
             onError: { _ in
