@@ -16,9 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        login.text = "beleli@gmail.com"
-        password.text = "Marmota51"
     }
     
     override func didReceiveMemoryWarning() {
