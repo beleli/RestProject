@@ -17,7 +17,6 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
     var filteredTasks = [TaskItemDb]()
     var selectedItem: TaskItemDb?
     let offlineDb = OffLineDb()
-    var synchronizeDb = true
     var searchController: UISearchController!
     
     @IBAction func btnSearch(_ sender: UIBarButtonItem) {
@@ -145,13 +144,7 @@ class TasksViewController: UITableViewController, UISearchBarDelegate, UISearchC
         PostService().getTasks(
             onSuccess: { response in
                 self.originalTasks = self.offlineDb.getItemDb((response?.body?.results)!)
-                if self.synchronizeDb {
-                    self.offlineDb.synchronizeDb()
-                    self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
-                    self.synchronizeDb = false
-                } else {
-                    self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
-                }
+                self.offlineDb.clearAndSaveAllTaks(self.originalTasks)
         },
             onError: { _ in
                 self.originalTasks = self.offlineDb.getAllDbTasks()

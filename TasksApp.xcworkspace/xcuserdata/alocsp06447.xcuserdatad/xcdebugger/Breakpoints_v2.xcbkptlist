@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TasksApp/DBTask.swift"
-            timestampString = "534803302.018769"
+            timestampString = "534873621.441041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "synchronizeDb()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "checkIsComplete()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,76 +25,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TasksApp/DBTask.swift"
-            timestampString = "534803302.018906"
+            filePath = "TasksApp/TasksViewController.swift"
+            timestampString = "534873621.442347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "synchronizeDb()"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "getTasks()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TasksApp/DBTask.swift"
-            timestampString = "534803302.019421"
+            filePath = "TasksApp/TasksViewController.swift"
+            timestampString = "534873621.442785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "synchronizeDb()"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "getTasks()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TasksApp/DBTask.swift"
-            timestampString = "534803302.019541"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.44292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "setDeleted(_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "touchOk(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TasksApp.OffLineDb.(setDeleted in _EF68963DCB1748CFC94BE01FF2E05A3F)(Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;EasyRest.Response&lt;TasksApp.Login&gt;&gt;) -&gt; () in TasksApp.ViewController.touchOk(__ObjC.UIButton) -&gt; ()"
                   moduleName = "TasksApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alocsp06447/Desktop/Trabalho%20Rest/TasksProject/TasksApp/TasksApp/DBTask.swift"
-                  timestampString = "534803302.33024"
+                  urlString = "file:///Users/alocsp06447/Desktop/Trabalho%20Rest/TasksProject/TasksApp/TasksApp/ViewController.swift"
+                  timestampString = "534812832.268933"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "133">
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "950">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (TasksApp.TaskItemDb) -&gt; () in TasksApp.OffLineDb.(setDeleted in _EF68963DCB1748CFC94BE01FF2E05A3F)(Swift.String) -&gt; ()"
+                  symbolName = "closure #2 (Swift.Optional&lt;EasyRest.RestError&gt;) -&gt; () in TasksApp.ViewController.touchOk(__ObjC.UIButton) -&gt; ()"
                   moduleName = "TasksApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alocsp06447/Desktop/Trabalho%20Rest/TasksProject/TasksApp/TasksApp/DBTask.swift"
-                  timestampString = "534803302.337359"
+                  urlString = "file:///Users/alocsp06447/Desktop/Trabalho%20Rest/TasksProject/TasksApp/TasksApp/ViewController.swift"
+                  timestampString = "534812832.275288"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -102,16 +102,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/DBTask.swift"
+            timestampString = "534873621.443352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "synchronizeDb(onComplete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.443964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "touchOk(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.444098"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.44421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "clearKeychains()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.444318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "touchOk(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TasksApp/DBTask.swift"
-            timestampString = "534803320.712634"
+            timestampString = "534873621.444412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "setDeleted(_:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "synchronizeDb(onComplete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/ViewController.swift"
+            timestampString = "534873621.444896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "touchOk(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/DBTask.swift"
+            timestampString = "534873621.444989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "synchronizeDb(onComplete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TasksApp/DBTask.swift"
+            timestampString = "534873621.445565"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "synchronizeDb(onComplete:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

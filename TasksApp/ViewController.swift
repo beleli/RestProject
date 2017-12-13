@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ViewController: UIViewController {
     
@@ -16,6 +17,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        clearKeychains()
+        
+        let keychain = KeychainSwift()
+        login.text = keychain.get("userName")
+        password.text = keychain.get("password")
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,10 +33,19 @@ class ViewController: UIViewController {
     @IBAction func touchOk(_ sender: UIButton) {
         //show loading
         PostService().getLogin(username: login.text!, password: password.text!,
-                onSuccess: { response in
-            let login = response?.body ?? Login()
-            UserDefaults.standard.set(login.access_token, forKey: "token")
-            self.performSegue(withIdentifier: "segueToTasks", sender: self)
+            onSuccess: { response in
+                let login = response?.body ?? Login()
+                UserDefaults.standard.set(login.access_token, forKey: "token")
+                
+                let keychain = KeychainSwift()
+                keychain.set(self.login.text!, forKey: "userName")
+                keychain.set(self.password.text!, forKey: "password")
+                
+                let offlineDb = OffLineDb()
+                offlineDb.synchronizeDb() {
+                    self.performSegue(withIdentifier: "segueToTasks", sender: self)
+                }
+                
         }, onError: { _ in
             self.performSegue(withIdentifier: "segueToTasks", sender: self)
             self.showMessage("Houve algum problema, seguindo offline")
@@ -48,7 +64,20 @@ class ViewController: UIViewController {
         self.present(myalert, animated: true)
     }
     
+    private func clearKeychains() {
+        let keepKeys = UserDefaults.standard.bool(forKey: "keepKeychains")
+        if !keepKeys {
+            let keychain = KeychainSwift()
+            keychain.clear()
+            resetAllKeychains()
+            UserDefaults.standard.set(true, forKey: "keepKeychains")
+        }
+    }
     
-    
+    private func resetAllKeychains() {
+        //zerar as chaves
+        let keychain = KeychainSwift()
+        keychain.set("", forKey: "userName")
+        keychain.set("", forKey: "password")
+    }
 }
-
