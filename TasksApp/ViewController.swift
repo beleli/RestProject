@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var okButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class ViewController: UIViewController {
         let keychain = KeychainSwift()
         login.text = keychain.get("userName")
         password.text = keychain.get("password")
+        
+        if !login.text!.isEmpty && !password.text!.isEmpty {
+            touchOk(okButton)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +54,6 @@ class ViewController: UIViewController {
         }, onError: { _ in
             self.performSegue(withIdentifier: "segueToTasks", sender: self)
             self.showMessage("Houve algum problema, seguindo offline")
-            
         }, always: {
             //hide loading
         })
