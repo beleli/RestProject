@@ -52,22 +52,24 @@ class DetailViewController: UIViewController {
         aux.title = titulo.text
         aux.is_complete = completo.isOn ? true : false
         //task?.expiration_date = date?.toString(format: .isoDate)
-        if aux.id == nil {
-            saveTask(item: aux)
-        } else {
-            editTask(item: aux)
+        if validateTask(aux) {
+            if aux.id == nil {
+                saveTask(aux)
+            } else {
+                editTask(aux)
+            }
         }
     }
     
-    func editTask(item: TaskItemDb) {
-        let aux = offlineDb.getItem(item)
+    private func editTask(_ task: TaskItemDb) {
+        let aux = offlineDb.getItem(task)
         PostService().editTask(id: aux.id!, task: aux,
             onSuccess: { response in
                 self.task = self.offlineDb.getItemDb(response!.body!)
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
-                self.offlineDb.saveTaksOffline(item)
+                self.offlineDb.saveTaksOffline(task)
                 self.navigationController?.popViewController(animated: true)
                 self.showMessage("Houve erro ao alterar a tarefa, inserido offline")
         },
@@ -76,15 +78,15 @@ class DetailViewController: UIViewController {
         })
     }
     
-    func saveTask(item: TaskItemDb) {
-        let aux = offlineDb.getItem(item)
+    private func saveTask(_ task: TaskItemDb) {
+        let aux = offlineDb.getItem(task)
         PostService().saveTask(task: aux,
             onSuccess: { response in
                 self.task = self.offlineDb.getItemDb(response!.body!)
                 self.navigationController?.popViewController(animated: true)
         },
             onError: { _ in
-                self.offlineDb.saveTaksOffline(item)
+                self.offlineDb.saveTaksOffline(task)
                 self.navigationController?.popViewController(animated: true)
                 self.showMessage("Houve erro ao criar a tarefa, inserido offline")
         },
@@ -99,6 +101,18 @@ class DetailViewController: UIViewController {
             myalert.dismiss(animated: true)
         })
         self.present(myalert, animated: true)
+    }
+    
+    private func validateTask(_ task: TaskItemDb) -> Bool {
+        if task.title!.isEmpty {
+            showMessage("Titulo em branco")
+            return false
+        }
+        guard let _ = task.expiration_date else {
+            showMessage("Data de expiração em branco")
+            return false
+        }
+        return true
     }
     
 }

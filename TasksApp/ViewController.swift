@@ -20,10 +20,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         clearKeychains()
-        
-        let keychain = KeychainSwift()
-        login.text = keychain.get("userName")
-        password.text = keychain.get("password")
+        setKeychains()
         
         if !login.text!.isEmpty && !password.text!.isEmpty {
             touchOk(okButton)
@@ -83,5 +80,11 @@ class ViewController: UIViewController {
         let keychain = KeychainSwift()
         keychain.set("", forKey: "userName")
         keychain.set("", forKey: "password")
+    }
+    
+    private func setKeychains() {
+        let keychain = KeychainSwift()
+        login.text = keychain.get("userName")
+        password.text = keychain.get("password")
     }
 }
